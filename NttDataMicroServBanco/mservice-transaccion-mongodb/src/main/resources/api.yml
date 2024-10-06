@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Microservicio de Gestión de Transacciones
+  description: Microservicio para registrar y consultar transacciones bancarias.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8989/api/mongo
+paths:
+  /transacciones/deposito:
+    post:
+      summary: Registrar un depósito
+      description: Registra una transacción de depósito.
+      operationId: registrarDeposito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepositoRequest'
+      responses:
+        '200':
+          description: Depósito registrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionResponse'
+        '400':
+          description: Solicitud inválida
+
+  /transacciones/retiro:
+    post:
+      summary: Registrar un retiro
+      description: Registra una transacción de retiro.
+      operationId: registrarRetiro
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetiroRequest'
+      responses:
+        '200':
+          description: Retiro registrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionResponse'
+        '400':
+          description: Solicitud inválida
+
+  /transacciones/transferencia:
+    post:
+      summary: Registrar una transferencia
+      description: Registra una transacción de transferencia.
+      operationId: registrarTransferencia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferenciaRequest'
+      responses:
+        '200':
+          description: Transferencia registrada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionResponse'
+        '400':
+          description: Solicitud inválida
+
+  /transacciones/historial:
+    get:
+      summary: Consultar historial de transacciones
+      description: Obtiene el historial de transacciones registradas.
+      operationId: consultarHistorialTransacciones
+      responses:
+        '200':
+          description: Historial de transacciones devuelto
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransaccionResponse'
+        '404':
+          description: No se encontraron transacciones
+
+components:
+  schemas:
+    DepositoRequest:
+      type: object
+      properties:
+        monto:
+          type: number
+          format: double
+          example: 100.50
+        cuentaOrigen:
+          type: string
+          example: "CUENTA_123456"
+
+    RetiroRequest:
+      type: object
+      properties:
+        monto:
+          type: number
+          format: double
+          example: 50.00
+        cuentaOrigen:
+          type: string
+          example: "CUENTA_123456"
+
+    TransferenciaRequest:
+      type: object
+      required:
+        - cuentaOrigen
+        - cuentaDestino
+      properties:
+        monto:
+          type: number
+          format: double
+          example: 150.75
+        cuentaOrigen:
+          type: string
+          example: "CUENTA_123456"
+        cuentaDestino:
+          type: string
+          example: "CUENTA_654321"
+
+    TransaccionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "60d5ec49d77d1c5e6c3e4f4b"
+        tipo:
+          type: string
+          example: "Depósito"
+        monto:
+          type: number
+          format: double
+          example: 100.50
+        fecha:
+          type: string
+          format: date
+
+        cuentaOrigen:
+          type: string
+          example: "CUENTA_123456"
+        cuentaDestino:
+          type: string
+          example: "CUENTA_654321"

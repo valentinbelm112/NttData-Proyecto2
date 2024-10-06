@@ -1,0 +1,40 @@
+server:
+  port: 6060
+
+spring:
+  application:
+    name: mserver-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: cliente-service
+          uri: http://localhost:8585
+          predicates:
+            - Path=/api/cliente/**
+        - id: cuenta-service
+          uri: http://localhost:8686
+          predicates:
+            - Path=/api/cuentas/**
+        - id: transaccion-service
+          uri: http://localhost:8787
+          predicates:
+            - Path=/api/transacciones/**
+        - id: transaccion-service-mongo
+          uri: http://localhost:8989
+          predicates:
+            - Path=/api/mongo/transacciones/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:7575/eureka/
+

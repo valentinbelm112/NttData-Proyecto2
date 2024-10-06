@@ -1,0 +1,113 @@
+openapi: 3.0.1
+info:
+  title: Microservicio de Transacciones
+  description: API para la gestión de transacciones.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/transacciones
+    description: Servidor local
+
+paths:
+  /crear:
+    post:
+      tags:
+        - Transacciones
+      summary: Crea una nueva transacción
+      operationId: crearTransaccion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransaccionRequest'
+      responses:
+        '200':
+          description: Transacción creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionResponse'
+        '400':
+          description: Error en los datos proporcionados
+
+  /obtener/numtransaccion:
+    get:
+      tags:
+        - Transacciones
+      summary: Genera un nuevo número de transacción único
+      operationId: obtenerNumeroTransaccion
+      responses:
+        '200':
+          description: Número de transacción generado
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Error al generar el número de transacción
+
+components:
+  schemas:
+    TransaccionRequest:
+      type: object
+      properties:
+        numTransaccion:
+          type: string
+          example: "TRANS123456789"
+          description: "Número único de la transacción."
+        numCuenta:
+          type: string
+          example: "1234567890"
+          description: "Número de cuenta asociada."
+        monto:
+          type: number
+          format: double
+          example: 200.00
+          description: "Monto de la transacción."
+        tipo:
+          type: string
+          example: "deposito"  # Cambiado para ser un string simple
+          description: "Tipo de transacción (retiro o depósito)."
+        odeposito:
+          type: string
+          example: "Origen del depósito"
+          description: "Descripción del depósito."
+        comision:
+          type: number
+          format: double
+          example: 0.0
+          description: "Comisión aplicada a la transacción (si aplica)."
+
+    TransaccionResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: "ID de la transacción."
+        numTransaccion:
+          type: string
+          example: "TRANS123456789"
+          description: "Número único de la transacción."
+        numCuenta:
+          type: string
+          example: "1234567890"
+          description: "Número de cuenta asociada."
+        monto:
+          type: number
+          format: double
+          example: 200.00
+          description: "Monto de la transacción."
+        tipo:
+          type: string
+          example: "deposito"  # Cambiado para ser un string simple
+          description: "Tipo de transacción (retiro o depósito)."
+        odeposito:
+          type: string
+          example: "Origen del depósito"
+          description: "Descripción del depósito."
+        comision:
+          type: number
+          format: double
+          example: 0.0
+          description: "Comisión aplicada a la transacción (si aplica)."

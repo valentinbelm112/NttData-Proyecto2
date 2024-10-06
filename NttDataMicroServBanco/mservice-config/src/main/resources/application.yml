@@ -1,0 +1,16 @@
+server:
+  port: 9292
+
+spring:
+  profiles:
+    active: native
+
+  application:
+    name: microservice-config
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations
+

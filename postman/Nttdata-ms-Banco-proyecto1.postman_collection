@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "013f93a3-147d-4655-9248-cb503160ae3b",
+		"name": "ms-Banco-proyecto-nttdata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12107873"
+	},
+	"item": [
+		{
+			"name": "ms-cliente",
+			"item": [
+				{
+					"name": "get-cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6060/api/cliente/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cliente",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-cliente-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:6060/api/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put-cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \r\n        \"nombre\": \"Eduardo\",\r\n        \"apellido\": \"Pérez\",\r\n        \"dni\": \"12345678\",\r\n        \"email\": \"eduardoperez@xample\",\r\n        \"telefono\": \"987654321\",\r\n        \"direccion\": \"Av. Siempre Viva 742\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cliente/actualizar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cliente",
+								"actualizar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar-cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \r\n        \"nombre\": \"Pedro\",\r\n        \"apellido\": \"Pérez\",\r\n        \"dni\": \"12345678\",\r\n        \"email\": \"juanpereze@xample\",\r\n        \"telefono\": \"987654321\",\r\n        \"direccion\": \"Av. Siempre Viva 742\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cliente/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cliente",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post-cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Pérez\",\r\n    \"dni\": \"71838725\",\r\n    \"email\": \"juanpere@gmail.com\",\r\n    \"telefono\": \"987654321\",\r\n    \"direccion\": \"Av. Siempre Viva 742\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cliente/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cliente",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-cuenta",
+			"item": [
+				{
+					"name": "get-cuenta",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-cuenta-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": \"ABC123456\",\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"clienteId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar-cuenta-id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": \"ABC123456\",\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"clienteId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "depositar-cuenta-id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": \"ABC123456\",\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"clienteId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuenta/1/depositar?monto=100.50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuenta",
+								"1",
+								"depositar"
+							],
+							"query": [
+								{
+									"key": "monto",
+									"value": "100.50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retirar-cuenta-id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/1/retirar?monto=100.50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"1",
+								"retirar"
+							],
+							"query": [
+								{
+									"key": "monto",
+									"value": "100.50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post-cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"estadoCuenta\":\"ACTIVA\",\r\n    \"saldo\": 20,\r\n    \"clienteId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validar-cuenta-estado",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": \"ABCs123456\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"estadoCuenta\":\"INACTIVA\",\r\n    \"saldo\": 330.0,\r\n    \"clienteId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/cliente/1/activas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"cliente",
+								"1",
+								"activas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-transaccion",
+			"item": [
+				{
+					"name": "transaccion-crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\": \"deposito\",\r\n    \"tipoTransaccion\": \"deposito\",\r\n    \"numTransaccion\": \"TRANS123456789\",\r\n    \"numCuenta\": 2,\r\n    \"monto\": 200.00,\r\n    \"odeposito\": \"Origen del depósito\",\r\n    \"comision\":0.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/transacciones/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"transacciones",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener-numtransaccion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\": \"deposito\",\r\n    \"tipoTransaccion\": \"deposito\",\r\n    \"numTransaccion\": \"TRANS123456789\",\r\n    \"ipTransaccion\": \"192.168.1.30\",\r\n    \"numCuenta\": 2,\r\n    \"monto\": 200.00,\r\n    \"odeposito\": \"Origen del depósito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/transacciones/obtener/numtransaccion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"transacciones",
+								"obtener",
+								"numtransaccion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: mserver-transaccion-mysql
+
+  config:
+    import: optional:configserver:http://localhost:9292
+
+

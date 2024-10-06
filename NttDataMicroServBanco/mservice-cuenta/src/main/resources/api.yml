@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: Microservicio de Gestión de Cuentas
+  version: 1.0.0
+  description: API para manejar cuentas bancarias.
+
+servers:
+  - url: http://localhost:8686/api/cuentas
+    description: Servidor local
+
+paths:
+  /cliente/{clienteId}/activas:
+    get:
+      operationId: verificarCuentasActivas
+      summary: Verifica si el cliente tiene cuentas activas.
+      parameters:
+        - name: clienteId
+          in: path
+          required: true
+          description: ID del cliente a verificar.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Estado de cuentas activas.
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /crear:
+    post:
+      operationId: crearCuenta
+      summary: Crea una nueva cuenta.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CuentaRequest'
+      responses:
+        '201':
+          description: Cuenta creada exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+
+  /listar:
+    get:
+      operationId: listarCuentas
+      summary: Obtiene todas las cuentas.
+      responses:
+        '200':
+          description: Lista de cuentas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CuentaResponse'
+
+  /{id}:
+    get:
+      operationId: obtenerCuentaPorId
+      summary: Obtiene una cuenta por su ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la cuenta a obtener.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Cuenta encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+        '404':
+          description: Cuenta no encontrada.
+
+  /{cuentaId}/depositar:
+    put:
+      operationId: depositar
+      summary: Deposita un monto en la cuenta.
+      parameters:
+        - name: cuentaId
+          in: path
+          required: true
+          description: ID de la cuenta a depositar.
+          schema:
+            type: integer
+        - name: monto
+          in: query
+          required: true
+          description: Monto a depositar.
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Cuenta actualizada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+
+  /{cuentaId}/retirar:
+    put:
+      operationId: retirar
+      summary: Retira un monto de la cuenta.
+      parameters:
+        - name: cuentaId
+          in: path
+          required: true
+          description: ID de la cuenta a retirar.
+          schema:
+            type: integer
+        - name: monto
+          in: query
+          required: true
+          description: Monto a retirar.
+          schema:
+            type: number
+            format: double
+      responses:
+        '200':
+          description: Cuenta actualizada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+
+  /actualizar/{id}:
+    put:
+      operationId: actualizarCuenta
+      summary: Actualiza los detalles de una cuenta existente.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la cuenta a actualizar.
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CuentaRequest'
+      responses:
+        '200':
+          description: Cuenta actualizada exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+        '404':
+          description: Cuenta no encontrada.
+  /numero-cuenta/{numCuenta}:
+    get:
+      operationId: obtenerCuentaPorNumCuenta
+      summary: Obtiene una cuenta por su número de cuenta.
+      parameters:
+        - name: numCuenta
+          in: path
+          required: true
+          description: Número de cuenta a obtener.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cuenta encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CuentaResponse'
+        '404':
+          description: Cuenta no encontrada.
+  /eliminar/{id}:
+    delete:
+      operationId: eliminarCuenta
+      summary: Elimina una cuenta por su ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la cuenta a eliminar.
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Cuenta eliminada exitosamente.
+
+components:
+  schemas:
+    # Esquema para las solicitudes de crear o actualizar cuenta
+    CuentaRequest:
+      type: object
+      properties:
+        numeroCuenta:
+          type: string
+        saldo:
+          type: number
+          format: double
+          default: 0.0
+        tipoCuenta:
+          type: string
+          enum:
+            - AHORROS
+            - CORRIENTE
+        estadoCuenta:
+          type: string
+          enum:
+            - ACTIVA
+            - INACTIVA
+        clienteId:
+          type: integer
+
+    # Esquema para las respuestas de cuenta
+    CuentaResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        numeroCuenta:
+          type: string
+        saldo:
+          type: number
+          format: double
+        tipoCuenta:
+          type: string
+          enum:
+            - AHORROS
+            - CORRIENTE
+        estadoCuenta:
+          type: string
+          enum:
+            - ACTIVA
+            - INACTIVA
+        clienteId:
+          type: integer

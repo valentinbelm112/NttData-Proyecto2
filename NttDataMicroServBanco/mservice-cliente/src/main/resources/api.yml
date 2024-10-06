@@ -1,0 +1,178 @@
+openapi: 3.0.1
+info:
+  title: Microservicio de Clientes
+  description: API para la gestión de clientes.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8585/api/cliente
+    description: Servidor local
+
+paths:
+  /crear:
+    post:
+      tags:
+        - Cliente
+      summary: Crea un nuevo cliente
+      operationId: crearCliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+      responses:
+        '201':
+          description: Cliente creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          description: Error en los datos proporcionados
+  /listar:
+    get:
+      tags:
+        - Cliente
+      summary: Lista todos los clientes
+      operationId: listarClientes
+      responses:
+        '200':
+          description: Lista de clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClienteResponse'
+        '500':
+          description: Error al obtener la lista de clientes
+  /{id}:
+    get:
+      tags:
+        - Cliente
+      summary: Obtener un cliente por su ID
+      operationId: obtenerClientePorId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del cliente
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '404':
+          description: Cliente no encontrado
+  /actualizar/{id}:
+    put:
+      tags:
+        - Cliente
+      summary: Actualizar los datos de un cliente
+      operationId: actualizarCliente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del cliente a actualizar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteRequest'
+      responses:
+        '200':
+          description: Cliente actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteResponse'
+        '400':
+          description: Datos inválidos o error en la actualización
+  /eliminar/{id}:
+    delete:
+      tags:
+        - Cliente
+      summary: Eliminar un cliente por ID
+      operationId: eliminarCliente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del cliente a eliminar
+      responses:
+        '200':
+          description: Cliente eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                type: string
+
+components:
+  schemas:
+    ClienteRequest:
+      type: object
+      properties:
+        nombre:
+          type: string
+          example: "Juan"
+        apellido:
+          type: string
+          example: "Perez"
+        dni:
+          type: string
+          example: "12345678"
+        email:
+          type: string
+          example: "juan.perez@example.com"
+        telefono:
+          type: string
+          example: "+123456789"
+        direccion:
+          type: string
+          example: "Av. Siempre Viva 742"
+      required:
+        - nombre
+        - apellido
+        - dni
+        - email
+
+    ClienteResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: "Juan"
+        apellido:
+          type: string
+          example: "Perez"
+        dni:
+          type: string
+          example: "12345678"
+        email:
+          type: string
+          example: "juan.perez@example.com"
+        telefono:
+          type: string
+          example: "+123456789"
+        direccion:
+          type: string
+          example: "Av. Siempre Viva 742"
