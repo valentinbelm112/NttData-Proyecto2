@@ -383,11 +383,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "obtener-cuenta-numCuenta",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": \"ABCs123456\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"estadoCuenta\":\"INACTIVA\",\r\n    \"saldo\": 330.0,\r\n    \"clienteId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/cuentas/numero-cuenta/75534053456585",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"cuentas",
+								"numero-cuenta",
+								"75534053456585"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "ms-transaccion",
+			"name": "ms-transaccion-mysql",
 			"item": [
 				{
 					"name": "transaccion-crear",
@@ -448,6 +482,138 @@
 								"transacciones",
 								"obtener",
 								"numtransaccion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-transaccion-mongodb",
+			"item": [
+				{
+					"name": "transaccion-retiro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 0.0,\r\n  \"cuentaOrigen\": \"7553405345658\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/mongo/transacciones/retiro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"mongo",
+								"transacciones",
+								"retiro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaccion-deposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 1.0,\r\n  \"cuentaOrigen\": \"7553405345658\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/mongo/transacciones/deposito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"mongo",
+								"transacciones",
+								"deposito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaccion-transferencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 25,\r\n  \"cuentaOrigen\": \"7553405345658\",\r\n  \"cuentaDestino\": \"7135723216103\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/mongo/transacciones/transferencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"mongo",
+								"transacciones",
+								"transferencia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener-historial-transaccion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipo\": \"deposito\",\r\n    \"tipoTransaccion\": \"deposito\",\r\n    \"numTransaccion\": \"TRANS123456789\",\r\n    \"ipTransaccion\": \"192.168.1.30\",\r\n    \"numCuenta\": 2,\r\n    \"monto\": 200.00,\r\n    \"odeposito\": \"Origen del depósito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6060/api/mongo/transacciones/historial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6060",
+							"path": [
+								"api",
+								"mongo",
+								"transacciones",
+								"historial"
 							]
 						}
 					},
