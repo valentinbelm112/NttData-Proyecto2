@@ -1,14 +1,9 @@
 package com.nttdata.mservice_transaccion.mapper;
 
 
-import com.nttdata.mservice_transaccion.model.RetiroRequest;
 import com.nttdata.mservice_transaccion.model.Transaccion;
 import com.nttdata.mservice_transaccion.model.TransaccionResponse;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.stereotype.Component;
-
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 

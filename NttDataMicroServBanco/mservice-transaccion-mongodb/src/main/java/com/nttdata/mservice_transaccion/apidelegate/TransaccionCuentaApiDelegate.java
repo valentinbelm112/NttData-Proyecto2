@@ -1,6 +1,5 @@
 package com.nttdata.mservice_transaccion.apidelegate;
 
-import com.nttdata.mservice_transaccion.api.ApiUtil;
 import com.nttdata.mservice_transaccion.api.TransaccionesApiDelegate;
 import com.nttdata.mservice_transaccion.business.TransaccionService;
 import com.nttdata.mservice_transaccion.model.DepositoRequest;
@@ -9,7 +8,6 @@ import com.nttdata.mservice_transaccion.model.TransaccionResponse;
 import com.nttdata.mservice_transaccion.model.TransferenciaRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

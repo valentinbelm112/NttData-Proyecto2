@@ -10,12 +10,9 @@ import com.microservicios.cliente.model.ClienteResponse;
 import com.microservicios.cliente.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import static com.microservicios.cliente.mapper.ClienteMapperEntity.getCuentaArrayEntityofCuentaArrayResponse;
 import static com.microservicios.cliente.util.clientUtil.clienteNoEncontrado;
 

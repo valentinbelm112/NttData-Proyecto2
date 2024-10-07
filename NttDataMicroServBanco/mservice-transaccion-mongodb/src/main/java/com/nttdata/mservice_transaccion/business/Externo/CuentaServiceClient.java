@@ -12,7 +12,7 @@ public class CuentaServiceClient {
     private final WebClient webClient;
 
     public CuentaServiceClient(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("http://localhost:6060").build(); // Cambia la URL según tu configuración
+        this.webClient = webClientBuilder.baseUrl("http://localhost:6060").build();
     }
 
 

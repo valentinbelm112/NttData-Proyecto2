@@ -15,7 +15,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static com.nttdata.mservice_transaccion.mapper.ResponseMapperTranferencia.getTransaccionResponseArrayofTransaccionArray;
 
 @Service
 public class TransaccionServiceImpl implements TransaccionService{
@@ -129,8 +128,6 @@ public class TransaccionServiceImpl implements TransaccionService{
 
 
         cuentaServiceClient.ActualizarSaldo(Math.toIntExact(cuentaOrigen.getId()),cuentaRequest);
-
-
 
         CuentaRequest cuentaRequestDestino=new CuentaRequest();
         cuentaRequestDestino.setEstadoCuenta(cuentaDestino.getEstadoCuenta());

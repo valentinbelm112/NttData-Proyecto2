@@ -8,9 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.nttdata.mservice_transaccion</groupId>
-	<artifactId>mservice-transaccion-mongodb</artifactId>
+	<artifactId>microservice-transaccion-mongodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>microservice-transaccion-mysql</name>
+	<name>microservice-transaccion-mongodb</name>
 	<description>Registrar y gestionar el historial de transacciones bancarias de sus clientes</description>
 	<url/>
 	<licenses>
